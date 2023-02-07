@@ -67,7 +67,7 @@ resource "aws_ecs_service" "weather_app_demo" {
 
 resource "aws_security_group" "weather_app_demo" {
   name        = "weather-app-demo"
-  description = "Allow inbound traffic to flask app"
+  description = "Allow inbound traffic to weather app"
   vpc_id      = var.vpc_id
 
   ingress {
