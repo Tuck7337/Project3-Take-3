@@ -1,5 +1,5 @@
 resource "aws_codepipeline" "codepipeline" {
-  name     = "flask_demo_pipeline"
+  name     = "weather_demo_pipeline"
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
@@ -44,19 +44,19 @@ resource "aws_codepipeline" "codepipeline" {
       version          = "1"
 
       configuration = {
-        ProjectName = aws_codebuild_project.flask_app.name
+        ProjectName = aws_codebuild_project.weather_app.name
       }
     }
   }
 }
 
 resource "aws_codestarconnections_connection" "example" {
-  name          = "flask-demo-connection"
+  name          = "weather-demo-connection"
   provider_type = "GitHub"
 }
 
 resource "aws_s3_bucket" "codepipeline_bucket" {
-  bucket = "flask-demo-codepipeline-bucket"
+  bucket = "weather-demo-codepipeline-bucket"
 }
 
 resource "aws_s3_bucket_acl" "codepipeline_bucket_acl" {
@@ -65,7 +65,7 @@ resource "aws_s3_bucket_acl" "codepipeline_bucket_acl" {
 }
 
 resource "aws_iam_role" "codepipeline_role" {
-  name = "flask_demo_codepipeline_role"
+  name = "weather_demo_codepipeline_role"
 
   assume_role_policy = <<EOF
 {
@@ -85,7 +85,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "codepipeline_policy" {
-  name = "flask_demo_codepipeline_policy"
+  name = "weather_demo_codepipeline_policy"
   role = aws_iam_role.codepipeline_role.id
 
   policy = <<EOF
@@ -139,9 +139,9 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 EOF
 }
 
-resource "aws_codebuild_project" "flask_app" {
-  name          = "flask-app-demo"
-  description   = "Builds a flask application"
+resource "aws_codebuild_project" "weather_app" {
+  name          = "weather-app-demo"
+  description   = "Builds a weather application"
   service_role  = aws_iam_role.codebuild_role.arn
   build_timeout = "5"
 
@@ -173,15 +173,15 @@ resource "aws_codebuild_project" "flask_app" {
     }
     environment_variable {
       name  = "ECS_CLUSTER_NAME"
-      value = aws_ecs_cluster.flask_app_demo.name
+      value = aws_ecs_cluster.weather_app_demo.name
     }
     environment_variable {
       name  = "ECS_SERVICE_NAME"
-      value = aws_ecs_service.flask_app_demo.name
+      value = aws_ecs_service.weather_app_demo.name
     }
     environment_variable {
       name  = "ECS_TASK_DEFINITION"
-      value = aws_ecs_task_definition.flask_app_demo.family
+      value = aws_ecs_task_definition.weather_app_demo.family
     }
   }
 
@@ -212,7 +212,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "codebuild_policy" {
-  name = "flask_demo_codebuild_policy"
+  name = "weather_demo_codebuild_policy"
   role = aws_iam_role.codebuild_role.id
 
   policy = <<EOF
@@ -271,5 +271,5 @@ EOF
 }
 
 data "aws_kms_alias" "s3kmskey" {
-  name = "alias/flask_app_s3kmskey"
+  name = "alias/weather_app_s3kmskey"
 }
