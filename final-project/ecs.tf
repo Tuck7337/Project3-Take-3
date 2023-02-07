@@ -1,8 +1,8 @@
-resource "aws_ecs_cluster" "-" {
+resource "aws_ecs_cluster" "weather-app-demo" {
   name = "weather-app-demo"
 }
 
-resource "aws_ecs_task_definition" "-" {
+resource "aws_ecs_task_definition" "weather-app-demo" {
   family                   = "weather-app-demo"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -24,7 +24,7 @@ resource "aws_ecs_task_definition" "-" {
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "${aws_cloudwatch_log_group.-.name}",
+        "awslogs-group": "${aws_cloudwatch_log_group.weather-app-demo.name}",
         "awslogs-region": "${var.aws_region}",
         "awslogs-stream-prefix": "weather-app-demo"
       }
@@ -41,31 +41,31 @@ DEFINITION
   }
 }
 
-resource "aws_cloudwatch_log_group" "-" {
+resource "aws_cloudwatch_log_group" "weather-app-demo" {
   name = "/ecs/weather-app-demo"
 }
 
-resource "aws_ecs_service" "-" {
+resource "aws_ecs_service" "weather-app-demo" {
   name            = "weather-app-demo"
-  cluster         = aws_ecs_cluster.-.id
-  task_definition = aws_ecs_task_definition.-.arn
+  cluster         = aws_ecs_cluster.weather-app-demo.id
+  task_definition = aws_ecs_task_definition.weather-app-demo.arn
   desired_count   = 1
   launch_type     = "FARGATE"
 
   network_configuration {
     subnets          = var.subnets
-    security_groups  = [aws_security_group.-.id]
+    security_groups  = [aws_security_group.weather-app-demo.id]
     assign_public_ip = true
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.-.arn
+    target_group_arn = aws_lb_target_group.weather-app-demo.arn
     container_name   = "weather-app-demo"
     container_port   = 5000
   }
 }
 
-resource "aws_security_group" "-" {
+resource "aws_security_group" "weather-app-demo" {
   name        = "weather-app-demo"
   description = "Allow inbound traffic to weather app"
   vpc_id      = var.vpc_id
@@ -88,7 +88,7 @@ resource "aws_security_group" "-" {
   }
 }
 
-resource "aws_lb_target_group" "-" {
+resource "aws_lb_target_group" "weather-app-demo" {
   name        = "weather-app-demo"
   port        = 5000
   protocol    = "HTTP"
@@ -118,24 +118,24 @@ resource "aws_lb" "weather-app-demo" {
   }
 }
 
-resource "aws_lb_listener" "-" {
+resource "aws_lb_listener" "weather-app-demo" {
   load_balancer_arn = aws_lb.weather-app-demo.arn
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.-.arn
+    target_group_arn = aws_lb_target_group.weather-app-demo.arn
   }
 }
 
-resource "aws_lb_listener_rule" "-" {
-  listener_arn = aws_lb_listener.-.arn
+resource "aws_lb_listener_rule" "weather-app-demo" {
+  listener_arn = aws_lb_listener.weather-app-demo.arn
   priority     = 1
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.-.arn
+    target_group_arn = aws_lb_target_group.weather-app-demo.arn
   }
 
   condition {
