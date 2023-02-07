@@ -1,27 +1,27 @@
 variable "aws_account_id" {
-  default = "902107193506"
+  default = "797918408294"
 }
 
 variable "aws_region" {
-  default = "us-west-2"
+  default = "us-east-1"
 }
 
 variable "vpc_id" {
-  default = "vpc-05035bf257cf152ce"
+  default = "vpc-0bf27bf861c3bad7f"
 }
 
 variable "subnets" {
   type = list(string)
   default = [
-    "subnet-0bf4b2a7917b38ae8",
-    "subnet-0958e1e512b95af14",
-    "subnet-0914e9eee28e4b50e",
-    "subnet-057f5b4a52ce48fc5"
+    "subnet-0241e6f63ec8f841f",
+    "subnet-0d819d89928921573",
+    "subnet-03f5cb450c750d610",
+    "subnet-01eb68e3ae59a015d"
   ]
 }
 
 variable "image_repo_name" {
-  default = "flask-application-demo"
+  default = "weather-application-demo"
 }
 
 variable "image_tag" {
@@ -29,15 +29,15 @@ variable "image_tag" {
 }
 
 variable "image_repo_url" {
-  default = "902107193506.dkr.ecr.us-west-2.amazonaws.com/flask-application-demo"
+  default = "public.ecr.aws/q9r3s5p8/pla-project3"
 }
 
 variable "github_repo_owner" {
-  default = "m3rryqold"
+  default = "Tuck7337"
 }
 
 variable "github_repo_name" {
-  default = "terraform-ecs-codepipeline-flask-demo"
+  default = "Project3-Take-3"
 }
 
 variable "github_branch" {
