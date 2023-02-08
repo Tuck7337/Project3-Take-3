@@ -29,7 +29,7 @@ variable "image_tag" {
 }
 
 variable "image_repo_url" {
-  default = "public.ecr.aws/q9r3s5p8/pla-project3"
+  default = "797918408294.dkr.ecr.us-east-1.amazonaws.com/weather-app-demo"
 }
 
 variable "github_repo_owner" {
