@@ -29,7 +29,7 @@ variable "image_tag" {
 }
 
 variable "image_repo_url" {
-  default = "797918408294.dkr.ecr.us-east-1.amazonaws.com/weather-app-demo"
+  default = "797918408294.dkr.ecr.us-east-1.amazonaws.com/weather-application-demo"
 }
 
 variable "github_repo_owner" {
