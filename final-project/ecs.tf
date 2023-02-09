@@ -177,19 +177,18 @@ resource "aws_iam_role_policy" "task_definition_policy" {
     {
       "Effect": "Allow",
       "Action": [
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:GetAuthorizationToken",
+        "ecr-public:BatchCheckLayerAvailability",
         "ecr-public:GetAuthorizationToken",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:BatchGetImage",
+        "ecr-public:GetDownloadUrlForLayer",
+        "ecr-public:BatchGetImage",
         "logs:CreateLogStream",
         "logs:PutLogEvents",
         "secretsmanager:GetSecretValue",
         "ssm:GetParameters",
-        "ecr:CompleteLayerUpload",
-        "ecr:InitiateLayerUpload",
-        "ecr:PutImage",
-        "ecr:UploadLayerPart",
+        "ecr-public:CompleteLayerUpload",
+        "ecr-public:InitiateLayerUpload",
+        "ecr-public:PutImage",
+        "ecr-public:UploadLayerPart",
         "sts:GetServiceBearerToken"
       ],
       "Resource": [

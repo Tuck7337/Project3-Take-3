@@ -242,18 +242,17 @@ resource "aws_iam_role_policy" "codebuild_policy" {
     },
     {
       "Action": [
-        "ecr:BatchGetImage",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:CompleteLayerUpload",
-        "ecr:GetDownLoadUrlForLayer",
-        "ecr:GetAuthorizationToken",
+        "ecr-public:BatchGetImage",
+        "ecr-public:BatchCheckLayerAvailability",
+        "ecr-public:CompleteLayerUpload",
+        "ecr-public:GetDownLoadUrlForLayer",
         "ecr-public:GetAuthorizationToken",
-        "ecr:InitiateLayerUpload",
-        "ecr:PutImage",
-        "ecr:UploadLayerPart",
-        "ecr:DescribeRepositories",
-        "ecr:CreateRepository",
-        "ecs:UpdateService",
+        "ecr-public:InitiateLayerUpload",
+        "ecr-public:PutImage",
+        "ecr-public:UploadLayerPart",
+        "ecr-public:DescribeRepositories",
+        "ecr-public:CreateRepository",
+        "ecr-public:UpdateService",
         "sts:GetServiceBearerToken"
       ],
       "Resource": [
