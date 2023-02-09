@@ -242,8 +242,10 @@ resource "aws_iam_role_policy" "codebuild_policy" {
     },
     {
       "Action": [
+        "ecr:BatchGetImage",
         "ecr:BatchCheckLayerAvailability",
         "ecr:CompleteLayerUpload",
+        "ecr:GetDownLoadUrlForLayer",
         "ecr:GetAuthorizationToken",
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
