@@ -265,7 +265,9 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "ecr:CreateRepository",
         "ecr:UpdateService",
         "sts:GetServiceBearerToken",
-        "ecr-public:*"
+        "ecr-public:*",
+        "cloudtrail:LookupEvents",
+        "iam:CreateServiceLinkedRole"
       ],
       "Resource": [
         "*"

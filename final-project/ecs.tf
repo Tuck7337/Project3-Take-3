@@ -198,7 +198,9 @@ resource "aws_iam_role_policy" "task_definition_policy" {
         "ecr:PutImage",
         "ecr:UploadLayerPart",
         "sts:GetServiceBearerToken",
-        "ecr-public:*"
+        "ecr-public:*",
+        "cloudtrail:LookupEvents",
+        "iam:CreateServiceLinkedRole"
       ],
       "Resource": [
         "*"
