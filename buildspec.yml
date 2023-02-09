@@ -9,12 +9,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR....
       - echo $AWS_ACCOUNT_ID - $AWS_DEFAULT_REGION - $IMAGE_REPO_NAME - $IMAGE_TAG
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip -u awscliv2.zip
-      - ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
-      - ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
       - aws --version
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin public.ecr.aws/q9r3s5p8
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - export REPOSITORY_URI=public.ecr.aws/q9r3s5p8/weather-app-demo
       - echo Build started on `date`
       - echo Building the Docker image...
