@@ -19,8 +19,9 @@ phases:
   build:
     commands:
       - echo Pushing the Docker image to ECR...
-      - echo $REPOSITORY_URI:$IMAGE_TAG
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      # - echo $REPOSITORY_URI:$IMAGE_TAG
+      # - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push public.ecr.aws/q9r3s5p8/pla-project3:latest
   post_build:
     commands:
       - echo Build completed on `date`
