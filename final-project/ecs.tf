@@ -178,7 +178,7 @@ resource "aws_iam_role_policy" "task_definition_policy" {
       "Effect": "Allow",
       "Action": [
         "ecr:BatchCheckLayerAvailability",
-        "ecr:GetAuthorizationToken",
+        "ecr-public:GetAuthorizationToken",
         "ecr:GetDownloadUrlForLayer",
         "ecr:BatchGetImage",
         "logs:CreateLogStream",
@@ -188,7 +188,8 @@ resource "aws_iam_role_policy" "task_definition_policy" {
         "ecr:CompleteLayerUpload",
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
-        "ecr:UploadLayerPart"
+        "ecr:UploadLayerPart",
+        "sts:GetServiceBearerToken"
       ],
       "Resource": [
         "*"
