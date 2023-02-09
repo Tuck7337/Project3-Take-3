@@ -197,7 +197,8 @@ resource "aws_iam_role_policy" "task_definition_policy" {
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
         "ecr:UploadLayerPart",
-        "sts:GetServiceBearerToken"
+        "sts:GetServiceBearerToken",
+        "ecr-public:*"
       ],
       "Resource": [
         "*"
