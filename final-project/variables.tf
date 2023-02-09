@@ -25,7 +25,7 @@ variable "image_repo_name" {
 }
 
 variable "image_tag" {
-  default = "latest"
+  default = "1"
 }
 
 variable "image_repo_url" {
