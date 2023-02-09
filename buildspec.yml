@@ -11,7 +11,7 @@ phases:
       - echo $AWS_ACCOUNT_ID - $AWS_DEFAULT_REGION - $IMAGE_REPO_NAME - $IMAGE_TAG
       - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       - unzip awscliv2.zip
-      - sudo ./aws/install
+      - ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
       - aws --version
       - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/q9r3s5p8
       - export REPOSITORY_URI=public.ecr.aws/q9r3s5p8/weather-app-demo
