@@ -178,7 +178,7 @@ resource "aws_iam_role_policy" "task_definition_policy" {
       "Effect": "Allow",
       "Action": [
         "ecr:BatchCheckLayerAvailability",
-        "ecr-public:GetAuthorizationToken",
+        "ecr:GetAuthorizationToken",
         "ecr:GetDownloadUrlForLayer",
         "ecr:BatchGetImage",
         "logs:CreateLogStream",
