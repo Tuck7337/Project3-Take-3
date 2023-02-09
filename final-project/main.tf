@@ -151,7 +151,7 @@ resource "aws_codebuild_project" "weather_app" {
 
   environment {
     compute_type    = "BUILD_GENERAL1_SMALL"
-    image           = "aws/codebuild/standard:2.0"
+    image           = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
     type            = "LINUX_CONTAINER"
     privileged_mode = true
 
