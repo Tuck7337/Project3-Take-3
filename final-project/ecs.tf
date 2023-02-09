@@ -181,6 +181,10 @@ resource "aws_iam_role_policy" "task_definition_policy" {
         "ecr-public:GetAuthorizationToken",
         "ecr-public:GetDownloadUrlForLayer",
         "ecr-public:BatchGetImage",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetAuthorizationToken",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
         "logs:CreateLogStream",
         "logs:PutLogEvents",
         "secretsmanager:GetSecretValue",
@@ -189,6 +193,10 @@ resource "aws_iam_role_policy" "task_definition_policy" {
         "ecr-public:InitiateLayerUpload",
         "ecr-public:PutImage",
         "ecr-public:UploadLayerPart",
+        "ecr:CompleteLayerUpload",
+        "ecr:InitiateLayerUpload",
+        "ecr:PutImage",
+        "ecr:UploadLayerPart",
         "sts:GetServiceBearerToken"
       ],
       "Resource": [
