@@ -21,7 +21,7 @@ variable "subnets" {
 }
 
 variable "image_repo_name" {
-  default = "pla-project3"
+  default = "weather-app-demo"
 }
 
 variable "image_tag" {
@@ -29,7 +29,7 @@ variable "image_tag" {
 }
 
 variable "image_repo_url" {
-  default = "public.ecr.aws/q9r3s5p8/pla-project3"
+  default = "public.ecr.aws/q9r3s5p8/weather-app-demo"
 }
 
 variable "github_repo_owner" {
