@@ -17,7 +17,7 @@ phases:
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
       - echo Pushing the Docker image to ECR...
       - echo $REPOSITORY_URI:$IMAGE_TAG
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:$IMAGE_TAG 
   post_build:
     commands:
       - echo Build completed on `date`
