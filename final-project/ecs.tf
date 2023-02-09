@@ -184,7 +184,11 @@ resource "aws_iam_role_policy" "task_definition_policy" {
         "logs:CreateLogStream",
         "logs:PutLogEvents",
         "secretsmanager:GetSecretValue",
-        "ssm:GetParameters"
+        "ssm:GetParameters",
+        "ecr:CompleteLayerUpload",
+        "ecr:InitiateLayerUpload",
+        "ecr:PutImage",
+        "ecr:UploadLayerPart"
       ],
       "Resource": [
         "*"
