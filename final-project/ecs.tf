@@ -49,7 +49,7 @@ resource "aws_ecs_service" "weather-app-demo" {
   name            = "weather-app-demo"
   cluster         = aws_ecs_cluster.weather-app-demo.id
   task_definition = aws_ecs_task_definition.weather-app-demo.arn
-  desired_count   = 1
+  desired_count   = 2
   launch_type     = "FARGATE"
 
   network_configuration {
